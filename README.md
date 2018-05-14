@@ -10,7 +10,7 @@ The data that we will use is [The Food Balance Sheet](https://www.kaggle.com/dor
 
 Our data set was gathered and prepared by the Food and Agriculture Organization of the United Nations.
 
-Our target audience is the anyone who may have interest in factory farming and/or animal agricultural from the general public. We will be writing our report at a level that the average person can understand. However, within the general public, there are specific groups that may find particular interest in our data, such as farmers, nutritionists, food and feed purchasers, agricultural scientists, and more. We will also track trends that may be helpful for government organizations.
+Our target audience is anyone from the general public who may have interest in factory farming and/or animal agricultural. We will be writing our report at a level that the average person can understand. However, within the general public, there are specific groups that may find particular interest in our data, such as farmers, nutritionists, food and feed purchasers, agricultural scientists, and more. We will also track trends that may be helpful for government organizations.
 
 There are three specific questions our audience will learn from our data:
 1. Interesting outliers and potential explanations for causes to those outliers
