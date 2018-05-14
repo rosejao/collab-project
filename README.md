@@ -1,7 +1,7 @@
 # Final Project
 
 ## Project Description
-The data that we will use is [The Food Balance Sheet](https://www.kaggle.com/dorbicycle/world-foodfeed-production) csv file that is available to download from kaggle.com. According to the Kaggle summary:
+The data that we will use is [The Food Balance Sheet](https://www.kaggle.com/dorbicycle/world-foodfeed-production) csv file that is available to download from Kaggle.com. According to the Kaggle summary:
 
 “This dataset provides an insight on our worldwide food production - focusing on a comparison between food produced for human consumption and feed produced for animals. The Food and Agriculture Organization of the United Nations provides free access to food and agriculture data for over 245 countries and territories, from the year 1961 to the most recent update (depends on the dataset). One dataset from the FAO's database is the Food Balance Sheets. It presents a comprehensive picture of the pattern of a country's food supply during a specified reference period, the last time an update was loaded to the FAO database was in 2013. The food balance sheet shows for each food item the sources of supply and its utilization. This chunk of the dataset is focused on two utilizations of each food item available:
 
@@ -13,7 +13,7 @@ Our data set was gathered and prepared by the Food and Agriculture Organization 
 Our target audience is anyone from the general public who may have interest in factory farming and/or animal agriculture. We will be writing our report at a level that the average person can understand. However, within the general public, there are specific groups that may find particular interest in our data, such as farmers, nutritionists, food and feed purchasers, agricultural scientists, and more. We will also track trends that may be helpful for government organizations.
 
 There are three specific questions our audience will learn from our data:
-1. Interesting outliers and potential explanations for causes to those outliers
+1. Interesting outliers and potential causes
 2. What are the fastest growing countries in terms of food production/consumption?
 3. What is the difference between food and feed consumption?
 
