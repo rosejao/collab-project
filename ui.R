@@ -5,7 +5,7 @@ library(dplyr)
 
 ## Ui
 ui <- navbarPage(
-  theme = "web.css",
+  theme = "project.css",
   tabsetPanel(
     tabPanel(
       "Food & Feed",
