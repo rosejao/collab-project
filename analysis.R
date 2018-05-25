@@ -4,9 +4,6 @@ library(ggplot2)
 data <- read.csv("data/FAO.csv")
 
 
-
-years <- list("Y1961" = "Y1961", "Y1962" = "Y1962")
-
 countries <- data %>%
   distinct(Area)
 
@@ -15,15 +12,16 @@ countries <- head(countries, n = 10)
 items <- data %>%
   distinct(Item)
 
-food_data <- group_by(data, Area) %>%
-  filter(Element == "Food") %>%
-  summarise("total" = sum(Y1961))
-
-df <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
+elements <- data %>%
+  distinct(Element)
 
 
-food_year <- function(year_choice, item_choice, country_choice) {
+
+food_year <- function(year_choice, element_choice = "Food", country_choice) {
   
+  food_data <- group_by(data, Area.Abbreviation) %>%
+    filter(Element == element_choice) %>%
+    summarise(sum(Y1961), sum(Y1962), sum(Y2013))
   
   # light grey boundaries
   l <- list(color = toRGB("grey"), width = 0.5)
@@ -34,17 +32,25 @@ food_year <- function(year_choice, item_choice, country_choice) {
     showcoastlines = FALSE,
     projection = list(type = 'Mercator')
   )
-  
-  plot <- plotly(df) %>%
-    add_trace(
-      z = ~GDP..BILLIONS., color = ~GDP..BILLIONS., colors = 'Blues',
-      text = ~COUNTRY, locations = ~CODE, marker = list(line = l)
-    ) %>%
-    colorbar(title = 'GDP Billions US$', tickprefix = '$') %>%
+  m <- list(
+    l = 50,
+    r = 50,
+    b = 100,
+    t = 100,
+    pad = 4
+  )
+  plot <- plot_geo(food_data) %>%
+    add_trace(z = food_data[[year_choice]], color = food_data[[year_choice]], 
+              colors = 'Reds', text = ~Area.Abbreviation,
+              locations = ~Area.Abbreviation, marker = list(line = l)) %>%
+    colorbar(title = 'Food levels in thousands') %>%
     layout(
-      title = '2014 Global GDP',
-      geo = g
+      title = 'Food data by Country',
+      geo = g, 
+      autosize = F, width = 500, height = 500, margin = m
     )
   return(plot)
 }
+
+food_year('sum(Y1988)', "asdf", "asdf")
 

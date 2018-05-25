@@ -6,8 +6,11 @@ source("analysis.R")
 
 # declare shiny server
 server <- function(input, output) {
+  
   output$plot <- renderPlotly({
-    return(food_year(input$mapvar1, input$mapvar2, input$mapvar3))
+    y <- paste0("sum(Y", input$year, ")")
+    print(y)
+    return(food_year(y, input$mapvar2, "asdf"))
   })
 }
 

@@ -12,16 +12,17 @@ ui <- fluidPage(
       tabPanel("Food Produced by Country",
                titlePanel("Food Produced by Country"),
                sidebarLayout(
+
                  sidebarPanel(
-                   selectInput("mapvar1", label = h4("Choose a Year"),
-                               choices = years), 
+                   sliderInput("year", "Year:",
+                               min = 1961, max = 2013, value = 1961),
                    selectInput("mapvar2", label = h4("Choose an Item"),
-                               choices = items), 
+                               choices = elements), 
                    selectInput("mapvar3", label = h4("Choose a Country"),
                                choices = countries)
                  ),
                  mainPanel(
-                   plotOutput("plot")
+                   plotlyOutput("plot")
                  )
                )
       )
