@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # declare libraries
 library(shiny)
 library(plotly)
@@ -16,4 +17,3 @@ server <- function(input, output) {
 
 # link shiny server together
 shinyServer(server)
-

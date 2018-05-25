@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Declaring libraries
 library(shiny)
 library(ggplot2)
