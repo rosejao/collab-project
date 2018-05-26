@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Declaring libraries
 library(shiny)
 library(ggplot2)
@@ -9,24 +8,25 @@ source("analysis.R")
 ui <- fluidPage(
   navbarPage(
     tabsetPanel(
-      # First page title, variables that can be changed and plot
       tabPanel("Food Produced by Country",
                titlePanel("Food Produced by Country"),
                sidebarLayout(
-
                  sidebarPanel(
                    sliderInput("year", "Year:",
-                               min = 1961, max = 2013, value = 1961),
-                   selectInput("mapvar2", label = h4("Choose an Item"),
+                               min = 1961, max = 2013, value = 1961, step = 1, animate =
+                                 animationOptions(interval = 1000, loop = TRUE)),
+                   selectInput("mapvar2", label = h4("Choose an Element"),
                                choices = elements), 
-                   selectInput("mapvar3", label = h4("Choose a Country"),
-                               choices = countries)
+                   selectInput("mapvar3", label = h4("Choose an Item"),
+                               choices = items)
                  ),
                  mainPanel(
                    plotlyOutput("plot")
+                   
                  )
                )
-      )
+      ),
+      tabPanel("")
   )))
 
 ## App config

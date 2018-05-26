@@ -1,0 +1,12 @@
+name: Food-By-Country
+title: Food-By-Country
+username:
+account: namanzam
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 349154
+bundleId: 1393855
+url: https://namanzam.shinyapps.io/Food-By-Country/
+when: 1527298581.1143
+asMultiple: FALSE
+asStatic: FALSE

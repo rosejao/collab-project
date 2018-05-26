@@ -1,5 +1,7 @@
 # Final Project
 
+The link to the hosted shiny application can be found **[here](https://namanzam.shinyapps.io/Food-By-Country/)**.
+
 ## Project Description
 The data that we will use is [The Food Balance Sheet](https://www.kaggle.com/dorbicycle/world-foodfeed-production) csv file that is available to download from Kaggle.com. According to the Kaggle summary:
 
