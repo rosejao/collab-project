@@ -8,8 +8,8 @@ source("analysis.R")
 ui <- fluidPage(
   navbarPage(
     tabsetPanel(
-      tabPanel("Food Produced by Country",
-               titlePanel("Food Produced by Country"),
+      tabPanel("Food and Feed Produced by Country",
+               titlePanel("Food and Feed Produced by Country"),
                sidebarLayout(
                  sidebarPanel(
                    sliderInput("year", "Year:",
@@ -21,12 +21,33 @@ ui <- fluidPage(
                                choices = items)
                  ),
                  mainPanel(
-                   plotlyOutput("plot")
+                   plotlyOutput("plot1")
                    
                  )
                )
       ),
-      tabPanel("")
+      tabPanel("Compare Country Food and Feed Trends",
+               titlePanel("Country Food and Feed Trends"),
+               sidebarLayout(
+                 sidebarPanel(
+                   selectizeInput(
+                     'country', 'Countries:', choices = countries, 
+                     options = list(maxItems = 2, placeholder = "choose a country"), multiple = TRUE
+                   ),
+                   selectInput("element", label = h4("Choose an Element"),
+                               choices = elements),
+                   selectizeInput(
+                     'item', 'Items:', choices = items, 
+                     options = list(maxItems = 1, placeholder = "choose an item"), multiple = TRUE, 
+                     selected = "Beer"
+                   )
+                 ),
+                 mainPanel(
+                   plotlyOutput("plot2")
+                   
+                 )
+               )
+               )
   )))
 
 ## App config
