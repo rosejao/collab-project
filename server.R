@@ -1,10 +1,10 @@
-# declare libraries
+## declare libraries
 library(shiny)
 library(plotly)
 library(dplyr)
 source("analysis.R")
 
-# declare shiny server
+## declare shiny server
 server <- function(input, output) {
   output$plot1 <- renderPlotly({
     year <- paste0("Y", input$year)
@@ -13,7 +13,7 @@ server <- function(input, output) {
 
   output$plot2 <- renderPlotly({
     validate(
-      need(input$county <= 0, "Please use the selection widget on the left")
+      need(input$country != "", "Please use the selection widget on the left")
     )
     return(country_trend(input$country, input$element, input$item))
   })
@@ -24,5 +24,5 @@ server <- function(input, output) {
   })
 }
 
-# link shiny server together
+## link shiny server together
 shinyServer(server)

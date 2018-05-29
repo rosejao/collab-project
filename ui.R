@@ -1,13 +1,15 @@
-# Declaring libraries
+#@ Declaring libraries
 library(shiny)
 library(ggplot2)
 library(dplyr)
 source("analysis.R")
 
-# Defining UI
+#@ Defining UI
 ui <- fluidPage(
   navbarPage(
     tabsetPanel(
+      
+      ## First tab of selection of produce type and country
       tabPanel(
         "Food and Feed Produced by Country",
         titlePanel("Food and Feed Produced by Country"),
@@ -31,6 +33,8 @@ ui <- fluidPage(
           )
         )
       ),
+      
+      ## tab two of comparing 
       tabPanel(
         "Compare Country Food and Feed Trends",
         titlePanel("Country Food and Feed Trends"),

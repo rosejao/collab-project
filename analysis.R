@@ -30,7 +30,7 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
   ## light grey boundaries
   l <- list(color = toRGB("black"), width = 0.5)
 
-  # specify map projection/options
+  ## specify map projection/options
   g <- list(
     showframe = TRUE,
     showcoastlines = TRUE,
@@ -58,11 +58,11 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
   return(plot1)
 }
 
-# returns a line graph that shows the food/feed trend over the years by country
-# two countries can be selected at once to compare data
-# a single item can be selected to compare countries by item
+## returns a line graph that shows the food/feed trend over the years by country
+## two countries can be selected at once to compare data
+## a single item can be selected to compare countries by item
 country_trend <- function(country_names, element_choice = "Food", item_choice) {
-  # items_list <- c("Sugar cane", "Honey")
+  ## items_list <- c("Sugar cane", "Honey")
   years <- c(
     "2013", "2012", "2011",
     "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001",
@@ -86,7 +86,8 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     summarise_at(.vars = vars(Y1961:Y2013), sum, na.rm = TRUE)
 
   year_data2 <- stack(country_data2)
-
+  
+  ## Trend of country food and feed across decades to present on map
   plot2 <- plot_ly(
     x = years, y = year_data1$values, name = country_name1,
     type = "scatter", mode = "lines",
@@ -97,8 +98,8 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
   return(plot2)
 }
 
-# returns a histogram with the top five countries that produce the food/feed of
-# the selected item
+## returns a histogram with the top five countries that produce the food/feed of
+## the selected item
 top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   top <- data %>%
     filter(Element == element_choice, Item == item_choice) %>%
