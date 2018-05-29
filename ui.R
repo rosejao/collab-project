@@ -6,6 +6,9 @@ source("analysis.R")
 
 # Defining UI
 ui <- fluidPage(
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "project.css")
+  ),
   navbarPage(
     tabsetPanel(
       tabPanel("Food and Feed Produced by Country",
