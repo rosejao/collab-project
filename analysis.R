@@ -3,20 +3,23 @@ library(plotly)
 library(ggplot2)
 data <- read.csv("data/FAO.csv")
 
+# deleting Dote d'Ivoire data because the name is croupted
+data <- data[-c(4789:4907),]
 
+# getting all countries
 countries <- data %>%
   distinct(Area)
 
-countries <- countries[-40, ]
-
+# getting all distinct items in dataset
 items <- data %>%
   distinct(Item)
 
+# getting the two distinct elements in dataset
 elements <- data %>%
   distinct(Element)
 
 
-
+# returns a map displaying the food/feed produced by country
 food_year <- function(year_choice, element_choice = "Food", item_choice = "Total") {
   
   food_data <- group_by(data, Area.Abbreviation, Area) %>%
@@ -53,6 +56,9 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
   return(plot1)
 }
 
+# returns a line graph that shows the food/feed trend over the years by country
+# two countries can be selected at once to compare data
+# a single item can be selected to compare countries by item
 country_trend <- function(country_names, element_choice = "Food", item_choice) {
  # items_list <- c("Sugar cane", "Honey")
   years <- c("2013", "2012", "2011",
@@ -85,6 +91,22 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
   return(plot2)
     
 }
+
+# returns a histogram with the top five countries that produce the food/feed of
+# the selected item
+top_countries <- function(element_choice = "Food", item_choice, year_choice) {
+  top <- data %>%
+    filter(Element == element_choice, Item == item_choice) %>%
+    select(Area, c(year_choice)) %>%
+    top_n(n = 5)
+  
+  plot3 <- plot_ly(x = top$Area, y = top[, 2], histfunc = "sum", type = "histogram") %>%
+    layout(yaxis=list(type='linear'))
+  
+  return(plot3)
+}
+
+
 
 
 

@@ -8,12 +8,17 @@ source("analysis.R")
 server <- function(input, output) {
   
   output$plot1 <- renderPlotly({
-    y <- paste0("Y", input$year)
-    return(food_year(y, input$mapvar2, input$mapvar3))
+    year <- paste0("Y", input$year)
+    return(food_year(year, input$mapvar2, input$mapvar3))
   })
   
   output$plot2 <- renderPlotly({
     return(country_trend(input$country, input$element, input$item))
+  })
+  
+  output$plot3 <- renderPlotly({
+    year <- paste0("Y", input$year2)
+    return(top_countries(input$element2, input$item2, year))
   })
   
 }

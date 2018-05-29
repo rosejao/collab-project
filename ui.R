@@ -47,7 +47,27 @@ ui <- fluidPage(
                    
                  )
                )
+               ),
+      tabPanel("Top Countries per Item",
+               titlePanel("Top Countries per Item"),
+               sidebarLayout(
+                 sidebarPanel(
+                   sliderInput("year2", "Year:",
+                               min = 1961, max = 2013, value = 1961, step = 1),
+                   selectInput("element2", label = h4("Choose an Element"),
+                               choices = elements),
+                   selectizeInput(
+                     'item2', 'Items:', choices = items, 
+                     options = list(maxItems = 1, placeholder = "choose an item"), multiple = TRUE, 
+                     selected = "Beer"
+                   )
+                 ),
+                 mainPanel(
+                   plotlyOutput("plot3")
+                   
+                 )
                )
+      )
   )))
 
 ## App config
