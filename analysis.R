@@ -95,11 +95,11 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     color = "#7f7f7f"
   )
   x <- list(
-    title = "x Axis",
+    title = "Year",
     titlefont = f
   )
   y <- list(
-    title = "y Axis",
+    title = "Tonnes Produced (thousands)",
     titlefont = f
   )
   
@@ -107,11 +107,13 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
   plot2 <- plot_ly(
     x = years, y = year_data1$values, name = country_name1,
     type = "scatter", mode = "lines",
-    line = list(color = "rgb(205, 12, 24)", width = 4)) %>%
-    add_trace(y = year_data2$values, name = country_name2, 
-      line = list(color = "rgb(22, 96, 167)", width = 4))%>%
-    layout(xaxis = x, yaxis = y)
-
+    line = list(color = "rgb(205, 12, 24)", width = 4)
+  ) %>%
+    add_trace(y = year_data2$values, name = country_name2, line = list(color = "rgb(22, 96, 167)", width = 4)) %>% 
+    layout(title = "Country Production Comparison",
+      xaxis = x, yaxis = y,
+          margin = list(b = 60), xaxis = list(tickangle = 45))
+  
   return(plot2)
 }
 
