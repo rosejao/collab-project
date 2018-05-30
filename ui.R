@@ -58,14 +58,14 @@ production and consumption by American consumers. The graph below shows the
 increase in meat consumption spearheaded by the popular rise in poultry over 
 the past couple of decades."),
 
-img(src ="annual-meat-consumption.png"),
+img(src ="annual-meat-consumption.png", height = 372, width = 672),
  
 
 
 p("It appears that the U.S. maintains a pretty high production of feed relative 
-to the global production levels but begins to lose market share in the 2000s. 
+to the global production levels but begins to lose market share in the 2000s."),
 
-For further analysis, we can use the ‘Compare Country Food and Feed Trends’ to 
+p("For further analysis, we can use the ‘Compare Country Food and Feed Trends’ to 
 segment a particular product or compare/contrast countries. You may also use the
 ‘Top Countries per Item’ tab to get general oversight of the top producing countries.
 ")
@@ -123,7 +123,8 @@ segment a particular product or compare/contrast countries. You may also use the
             )
           ),
           mainPanel(
-            plotlyOutput("plot3")
+            plotlyOutput("plot3"),
+            
           )
         )
       )
