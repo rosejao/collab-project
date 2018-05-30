@@ -130,7 +130,9 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   
   x <- as.vector(top$Area)
 
-  plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar")
+  plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar") %>%
+    layout(yaxis = list(title = 'Amount Produced (1,000 tonnes)'),
+           xaxis = list(title = 'Country'))
   
 
   return(plot3)
