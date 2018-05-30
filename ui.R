@@ -162,10 +162,12 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
           ),
           mainPanel(
             plotlyOutput("plot3"),
+            br(""),
             h4(
               strong("Who Produces The Most?"),
               align = "center"
             ),
+            br(""),
             p(strong("Instructions:"), "Select either ‘Food’ or ‘Feed’ and then choose the 
               agricultural item that will be measured by production levels. Use the graph to 
               look at trends and hover over the bars for the top producers and their exact amounts.")
@@ -191,7 +193,7 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
               choices = elements
             ),
             selectizeInput(
-              "country2", "Items:",
+              "country2", "Country:",
               choices = countries,
               options = list(maxItems = 1, placeholder = "Choose a country"),
               multiple = TRUE,
