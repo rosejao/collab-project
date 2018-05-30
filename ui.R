@@ -123,8 +123,7 @@ segment a particular product or compare/contrast countries. You may also use the
             )
           ),
           mainPanel(
-            plotlyOutput("plot3"),
-            
+            plotlyOutput("plot3")
           )
         )
       )
