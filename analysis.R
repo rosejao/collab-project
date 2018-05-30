@@ -161,7 +161,7 @@ top_items <- function(element_choice = "Food", country_choice, year_choice) {
            yaxis = list(title = 'Tonnes Produced (thousands)'),
            xaxis = list(title = 'Item'),
            autosize = T,
-           margin = list(b = 90, r = 80, l =80, t = 90), xaxis = list(tickangle = 20))
+           margin = list(b = 120, r = 80, l =80, t = 90), xaxis = list(tickangle = 20))
   
   
   return(plot4)
