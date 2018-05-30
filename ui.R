@@ -18,7 +18,7 @@ ui <- fluidPage(
         titlePanel("Food and Feed Produced by Country"),
         sidebarLayout(
           sidebarPanel(
-            sliderInput("year", "Year:",
+            sliderInput("year", "Year",
               sep = "", min = 1961, max = 2013, value = 1961, step = 1, animate =
                 animationOptions(interval = 1000, loop = TRUE)
             ),
