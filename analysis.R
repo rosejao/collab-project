@@ -4,7 +4,8 @@ library(plotly)
 library(ggplot2)
 data <- read.csv("data/FAO.csv")
 
-## deleting Dote d'Ivoire data because the name is corupted
+## deleting Cote d'Ivoire data because the name is corupted
+## had to hard coded (DONT RUN AGAIN)
 data <- data[-c(4789:4907), ]
 
 ## getting all countries
@@ -46,7 +47,7 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
   plot1 <- plot_geo(food_data) %>%
     add_trace(
       z = food_data[[year_choice]], color = food_data[[year_choice]],
-      colors = "Reds", text = ~ Area,
+      colors = "Greens", text = ~ Area,
       locations = ~ Area.Abbreviation, marker = list(line = l)
     ) %>%
     colorbar(title = "Food/Feed produced (1,000 tonnes)") %>%
@@ -109,7 +110,7 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     type = "scatter", mode = "lines",
     line = list(color = "rgb(205, 12, 24)", width = 4)) %>%
     add_trace(y = year_data2$values, name = country_name2, 
-      line = list(color = "rgb(22, 96, 167)", width = 4))%>%
+      line = list(color = "rgb(22, 96, 167)", width = 4)) %>%
     layout(xaxis = x, yaxis = y)
 
   return(plot2)
@@ -128,3 +129,17 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
 
   return(plot3)
 }
+
+top <- data %>%
+  filter(Element == "Food", Item == "Beer") %>%
+  select(Area, Y2000) %>%
+  top_n(n = 2, wt = Y2000)
+
+t <- data.frame(top)
+
+x <- top$Area %>%
+  head(2)
+
+plot3 <- plot_ly(x = x, y = top[, 2],  type = "histogram")
+
+
