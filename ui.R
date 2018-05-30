@@ -108,7 +108,8 @@ segment a particular product or compare/contrast countries. You may also use the
         sidebarLayout(
           sidebarPanel(
             sliderInput("year2", "Year:",
-              sep = "", min = 1961, max = 2013, value = 1961, step = 1
+              sep = "", min = 1961, max = 2013, value = 1961, step = 1, animate =
+                animationOptions(interval = 1000, loop = TRUE)
             ),
             selectInput("element2",
               label = h4("Choose an Element"),
@@ -133,7 +134,8 @@ segment a particular product or compare/contrast countries. You may also use the
       sidebarLayout(
         sidebarPanel(
           sliderInput("year3", "Year:",
-                      sep = "", min = 1961, max = 2013, value = 1961, step = 1
+                      sep = "", min = 1961, max = 2013, value = 1961, step = 1, animate =
+                        animationOptions(interval = 1000, loop = TRUE)
           ),
           selectInput("element3",
                       label = h4("Choose an Element"),
