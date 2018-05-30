@@ -5,8 +5,8 @@ account: namanzam
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 349154
-bundleId: 1397315
+bundleId: 1400796
 url: https://namanzam.shinyapps.io/Food-By-Country/
-when: 1527551323.91788
+when: 1527696378.30346
 asMultiple: FALSE
 asStatic: FALSE

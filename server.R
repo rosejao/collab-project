@@ -22,6 +22,13 @@ server <- function(input, output) {
     year <- paste0("Y", input$year2)
     return(top_countries(input$element2, input$item2, year))
   })
+  
+  output$plot4 <- renderPlotly({
+    year <- paste0("Y", input$year3)
+    return(top_items(input$element3, input$country2, year))
+  })
+  
+  
 }
 
 ## link shiny server together

@@ -126,7 +126,7 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   top <- data %>%
     filter(Element == element_choice, Item == item_choice) %>%
     select(Area, c(year_choice)) %>%
-    top_n(n = 2)
+    top_n(n = 5)
   
   x <- as.vector(top$Area)
 
@@ -138,7 +138,24 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   return(plot3)
 }
 
-p <- top_countries("Food", "Beer", "Y1999")
+## the selected item
+top_items <- function(element_choice = "Food", country_choice, year_choice) {
+  
+  top <- data %>%
+    filter(Element == element_choice, Area == country_choice) %>%
+    select(Item, c(year_choice)) %>%
+    top_n(n = 5)
+  
+  x <- as.vector(top$Item)
+  
+  plot4 <- plot_ly(x = x, y = top[, 2],  type = "bar") %>%
+    layout(yaxis = list(title = 'Amount Produced (1,000 tonnes)'),
+           xaxis = list(title = 'Item'))
+  
+  
+  return(plot4)
+}
+
 
 
 

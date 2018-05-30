@@ -126,7 +126,32 @@ segment a particular product or compare/contrast countries. You may also use the
             plotlyOutput("plot3")
           )
         )
-      )
+      ),
+    tabPanel(
+      "Top Items per Country",
+      titlePanel("Top Items per Country"),
+      sidebarLayout(
+        sidebarPanel(
+          sliderInput("year3", "Year:",
+                      sep = "", min = 1961, max = 2013, value = 1961, step = 1
+          ),
+          selectInput("element3",
+                      label = h4("Choose an Element"),
+                      choices = elements
+          ),
+          selectizeInput(
+            "country2", "Items:",
+            choices = countries,
+            options = list(maxItems = 1, placeholder = "choose a country"),
+            multiple = TRUE,
+            selected = "India"
+          )
+        ),
+        mainPanel(
+          plotlyOutput("plot4")
+    )
+  )
+)
     )
   )
 )
