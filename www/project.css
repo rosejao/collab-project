@@ -21,7 +21,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: #F5F5F4; }
+  background: #D70000; }
   body.is-preload *, body.is-preload *:before, body.is-preload *:after {
     -moz-animation: none !important;
     -webkit-animation: none !important;
@@ -101,7 +101,7 @@ html {
       font-size: 11pt; } }
 
 body {
-  background-color: #ffffff;
+  background-color: #D70000;
   color: #444444; }
 
 body, input, select, textarea {

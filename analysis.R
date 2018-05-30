@@ -51,9 +51,11 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
     ) %>%
     colorbar(title = "Food/Feed produced (1,000 tonnes)") %>%
     layout(
+      paper_bgcolor='rgba(0,0,0,0)',
+      plot_bgcolor='rgba(0,0,0,0)',
       title = "Food and Feed Data by Country",
       geo = g,
-      autosize = F, width = 1000, height = 1000, margin = m
+      autosize = F, width = 1000, height = 3, margin = m
     )
   return(plot1)
 }
