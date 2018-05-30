@@ -46,7 +46,7 @@ map for the number of tons produced in that specific country."
 and focus on the United States.")
             ),
             p("In 1961 the U.S. produced 81.5 million tons for feed
-and 1.47 million tons for food, and in 2013 1.28 billion tons were produced
+and 1.47 million tons for food, and in 2013 128 million tons were produced
 for feed and 3.91 million tons for food. Although the tons of feed and
 food increased over half a century, the amounts actually decreased
               in comparison to the global production."),
@@ -124,7 +124,7 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
               agricultural revolution. They eliminated personal farms and property, 
               and replaced their system with a socialistic approach by contributing to 
               collective farms. We also see that the U.S. reached a production plateau 
-              in 1987, and a quick google search shows that the U.S. overproduced corn that 
+              in 1987, and a quick Google search shows that the U.S. overproduced corn that 
               year and struggled with storing the surplus corn due to storage limitations 
               and spoilage."),
             
