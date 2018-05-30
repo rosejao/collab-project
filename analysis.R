@@ -119,7 +119,7 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     add_trace(y = year_data2$values, name = country_name2, line = list(color = "rgb(22, 96, 167)", width = 4)) %>% 
     layout(title = "Country Production Comparison",
       xaxis = x, yaxis = y,
-      autosize = F,
+      autosize = T,
           margin = list(b = 60), list(t = 100), xaxis = list(tickangle = 45))
   
   return(plot2)
