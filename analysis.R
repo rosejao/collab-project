@@ -41,8 +41,8 @@ food_year <- function(year_choice, element_choice = "Food", item_choice) {
   m <- list(
     l = 50,
     r = 50,
-    b = 50,
-    t = 50,
+    b = 80,
+    t = 80,
     pad = 4
   )
   plot1 <- plot_geo(food_data) %>%
@@ -96,11 +96,6 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
   ## Stacking data to group 
   year_data2 <- stack(country_data2)
   
-  f <- list(
-    family = "Courier New, monospace",
-    size = 18,
-    color = "#7f7f7f"
-  )
   x <- list(
     title = "Year"
   )
@@ -118,7 +113,7 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     layout(title = "Country Production Comparison",
       xaxis = x, yaxis = y,
       autosize = T,
-          margin = list(b = 60), list(t = 100), pad = 6, xaxis = list(tickangle = 45))
+          margin = list(b = 90, r = 80, l =80, t = 90), list(t = 100), pad = 6, xaxis = list(tickangle = 45))
   
   return(plot2)
 }
@@ -142,7 +137,7 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
            yaxis = list(title = 'Tonnes Produced (thousands)'),
            xaxis = list(title = 'Country'),
            autosize = F,
-           margin = list(b = 90), list(r = 90), xaxis = list(tickangle = 15))
+           margin = list(b = 90, r = 80, l =80, t = 90), list(r = 90), xaxis = list(tickangle = 15))
   
   return(plot3)
 }
@@ -165,8 +160,8 @@ top_items <- function(element_choice = "Food", country_choice, year_choice) {
     layout(title = "Top Produced Items per Country",
            yaxis = list(title = 'Tonnes Produced (thousands)'),
            xaxis = list(title = 'Item'),
-           autosize = F,
-           margin = list(b = 130), xaxis = list(tickangle = 20))
+           autosize = T,
+           margin = list(b = 90, r = 80, l =80, t = 90), xaxis = list(tickangle = 20))
   
   
   return(plot4)
