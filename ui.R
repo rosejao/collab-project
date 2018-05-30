@@ -23,11 +23,11 @@ ui <- fluidPage(
                 animationOptions(interval = 1000, loop = TRUE)
             ),
             selectInput("mapvar2",
-              label = h4("Choose an Element:"),
+              label = h4("Choose an Element"),
               choices = elements
             ),
             selectInput("mapvar3",
-              label = h4("Choose an Item:"),
+              label = h4("Choose an Item"),
               choices = items
             )
           ),
@@ -44,17 +44,17 @@ ui <- fluidPage(
         sidebarLayout(
           sidebarPanel(
             selectizeInput(
-              "country", "Countries:",
+              "country", "Countries",
               choices = countries,
               options = list(maxItems = 2, placeholder = "Choose a country"),
               multiple = TRUE
             ),
             selectInput("element",
-              label = h4("Choose an Element:"),
+              label = h4("Choose an Element"),
               choices = elements
             ),
             selectizeInput(
-              "item", "Items:",
+              "item", "Items",
               choices = items,
               options = list(maxItems = 1, placeholder = "choose an item"),
               multiple = TRUE,
