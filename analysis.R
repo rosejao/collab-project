@@ -96,11 +96,11 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     color = "#7f7f7f"
   )
   x <- list(
-    title = "x Axis",
+    title = "Year",
     titlefont = f
   )
   y <- list(
-    title = "y Axis",
+    title = "Tonnes Produced (thousands)",
     titlefont = f
   )
   
@@ -108,38 +108,37 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
   plot2 <- plot_ly(
     x = years, y = year_data1$values, name = country_name1,
     type = "scatter", mode = "lines",
-    line = list(color = "rgb(205, 12, 24)", width = 4)) %>%
-    add_trace(y = year_data2$values, name = country_name2, 
-      line = list(color = "rgb(22, 96, 167)", width = 4)) %>%
-    layout(xaxis = x, yaxis = y)
-
+#
+    line = list(color = "rgb(205, 12, 24)", width = 4)
+  ) %>%
+    add_trace(y = year_data2$values, name = country_name2, line = list(color = "rgb(22, 96, 167)", width = 4)) %>% 
+    layout(title = "Country Production Comparison",
+      xaxis = x, yaxis = y,
+          margin = list(b = 60), xaxis = list(tickangle = 45))
+  
   return(plot2)
 }
 
 ## returns a histogram with the top five countries that produce the food/feed of
 ## the selected item
 top_countries <- function(element_choice = "Food", item_choice, year_choice) {
+  
   top <- data %>%
     filter(Element == element_choice, Item == item_choice) %>%
     select(Area, c(year_choice)) %>%
-    top_n(n = 5)
+    top_n(n = 2)
+  
+  x <- as.vector(top$Area)
 
-  plot3 <- plot_ly(x = top$Area, y = top[, 2], histfunc = "sum", type = "histogram") %>%
-    layout(yaxis = list(type = "linear"))
+  plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar")
+  
 
   return(plot3)
 }
 
-top <- data %>%
-  filter(Element == "Food", Item == "Beer") %>%
-  select(Area, Y2000) %>%
-  top_n(n = 2, wt = Y2000)
+p <- top_countries("Food", "Beer", "Y1999")
 
-t <- data.frame(top)
 
-x <- top$Area %>%
-  head(2)
 
-plot3 <- plot_ly(x = x, y = top[, 2],  type = "histogram")
 
 
