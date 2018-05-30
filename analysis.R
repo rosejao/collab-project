@@ -108,7 +108,6 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
   plot2 <- plot_ly(
     x = years, y = year_data1$values, name = country_name1,
     type = "scatter", mode = "lines",
-#
     line = list(color = "rgb(205, 12, 24)", width = 4)
   ) %>%
     add_trace(y = year_data2$values, name = country_name2, line = list(color = "rgb(22, 96, 167)", width = 4)) %>% 
@@ -130,11 +129,10 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   
   x <- as.vector(top$Area)
 
-  plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar") %>%
+  plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Reds") %>%
     layout(yaxis = list(title = 'Amount Produced (1,000 tonnes)'),
            xaxis = list(title = 'Country'))
   
-
   return(plot3)
 }
 
@@ -148,16 +146,10 @@ top_items <- function(element_choice = "Food", country_choice, year_choice) {
   
   x <- as.vector(top$Item)
   
-  plot4 <- plot_ly(x = x, y = top[, 2],  type = "bar") %>%
+  plot4 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Greens") %>%
     layout(yaxis = list(title = 'Amount Produced (1,000 tonnes)'),
            xaxis = list(title = 'Item'))
   
   
   return(plot4)
 }
-
-
-
-
-
-

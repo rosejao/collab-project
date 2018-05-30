@@ -248,3 +248,11 @@ hr {
   @media screen and (max-width: 480px) {
     .inner {
       max-width: calc(100% - 3rem); } }
+      
+.irs-bar,
+.irs-bar-edge,
+.irs-single,
+.irs-grid-pol {
+  background: red;
+  border-color: red;
+}

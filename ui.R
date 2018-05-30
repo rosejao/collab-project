@@ -39,7 +39,7 @@ ui <- fluidPage(
             strong("Instructions:"), "Select either ‘Food’ or ‘Feed’ and then 
 choose the agricultural item that will be measured by global production. Use the 
 slider to select the year and hover over the desired country on the interactive 
-map, for the number of tons produced in that specific country."),
+map for the number of tons produced in that specific country."),
 
 p(
   em("For this example, we will use ‘Maize and products’ and focus on the United 
