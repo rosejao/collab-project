@@ -89,13 +89,28 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
 
   year_data2 <- stack(country_data2)
   
+  f <- list(
+    family = "Courier New, monospace",
+    size = 18,
+    color = "#7f7f7f"
+  )
+  x <- list(
+    title = "x Axis",
+    titlefont = f
+  )
+  y <- list(
+    title = "y Axis",
+    titlefont = f
+  )
+  
   ## Trend of country food and feed across decades to present on map
   plot2 <- plot_ly(
     x = years, y = year_data1$values, name = country_name1,
     type = "scatter", mode = "lines",
-    line = list(color = "rgb(205, 12, 24)", width = 4)
-  ) %>%
-    add_trace(y = year_data2$values, name = country_name2, line = list(color = "rgb(22, 96, 167)", width = 4))
+    line = list(color = "rgb(205, 12, 24)", width = 4)) %>%
+    add_trace(y = year_data2$values, name = country_name2, 
+      line = list(color = "rgb(22, 96, 167)", width = 4))%>%
+    layout(xaxis = x, yaxis = y)
 
   return(plot2)
 }
