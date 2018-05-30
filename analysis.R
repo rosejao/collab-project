@@ -22,6 +22,7 @@ elements <- data %>%
 
 
 ## returns a map displaying the food/feed produced by country
+
 food_year <- function(year_choice, element_choice = "Food", item_choice) {
   food_data <- group_by(data, Area.Abbreviation, Area) %>%
     filter(Element == element_choice) %>%
