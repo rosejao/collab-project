@@ -28,7 +28,7 @@ ui <- fluidPage(
             ),
             selectInput("mapvar3",
               label = h4("Choose an Item"),
-              choices = items
+              choices = items, selected = "Maize and products"
             )
           ),
           mainPanel(
@@ -82,7 +82,7 @@ segment a particular product or compare/contrast countries. You may also use the
             selectizeInput(
               "country", "Countries",
               choices = countries,
-              options = list(maxItems = 2, placeholder = "Choose a country"),
+              options = list(maxItems = 2, placeholder = "Choose 1 or 2 countries"),
               multiple = TRUE
             ),
             selectInput("element",

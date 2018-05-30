@@ -22,7 +22,7 @@ elements <- data %>%
 
 
 ## returns a map displaying the food/feed produced by country
-food_year <- function(year_choice, element_choice = "Food", item_choice = "Total") {
+food_year <- function(year_choice, element_choice = "Food", item_choice) {
   food_data <- group_by(data, Area.Abbreviation, Area) %>%
     filter(Element == element_choice) %>%
     filter(Item == item_choice) %>%
@@ -58,6 +58,7 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
       geo = g,
       autosize = F, width = 1000, height = 3, margin = m
     )
+  
   return(plot1)
 }
 
@@ -65,7 +66,6 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
 ## two countries can be selected at once to compare data
 ## a single item can be selected to compare countries by item
 country_trend <- function(country_names, element_choice = "Food", item_choice) {
-  ## items_list <- c("Sugar cane", "Honey")
   years <- c(
     "2013", "2012", "2011",
     "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001",
@@ -74,20 +74,25 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971",
     "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961"
   )
-
+  
+  ## Getting the first and second countries selected by user
   country_name1 <- country_names[1]
   country_name2 <- country_names[2]
 
+  ## Getting trend data for first country
   country_data1 <- data %>%
     filter(Area == country_name1, Element == element_choice, Item == item_choice) %>%
-    summarise_at(.vars = vars(Y1961:Y2013), sum, na.rm = TRUE)
+    summarise_at(.vars = vars(Y2013:Y1961), sum, na.rm = TRUE)
 
+  ## Stacking data to group 
   year_data1 <- stack(country_data1)
-
+  
+  ## Getting trend data for second country
   country_data2 <- data %>%
     filter(Area == country_name2, Element == element_choice, Item == item_choice) %>%
-    summarise_at(.vars = vars(Y1961:Y2013), sum, na.rm = TRUE)
-
+    summarise_at(.vars = vars(Y2013:Y1961), sum, na.rm = TRUE)
+  
+  ## Stacking data to group 
   year_data2 <- stack(country_data2)
   
   f <- list(
@@ -119,17 +124,20 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
   return(plot2)
 }
 
-## returns a histogram with the top five countries that produce the food/feed of
-## the selected item
+## returns a bar plot with the top five countries that produce the food/feed of
+## the selected item and year. Defaults element to "Food"
 top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   
+  ## Getting the top 5 countries filtering by given element, item and year
   top <- data %>%
     filter(Element == element_choice, Item == item_choice) %>%
     select(Area, c(year_choice)) %>%
     top_n(n = 5)
   
+  ## Getting x labels
   x <- as.vector(top$Area)
 
+  ## Making bar plot
   plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Reds") %>%
     layout(title = "Top Producing Countries per Item",
            yaxis = list(title = 'Tonnes Produced (thousands)'),
@@ -140,16 +148,20 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   return(plot3)
 }
 
-## the selected item
+## returns a bar plot with the top five items that produce the food/feed of
+## the selected country and year. Defaults element to "Food"
 top_items <- function(element_choice = "Food", country_choice, year_choice) {
   
+  ## Getting the top 5 items. filtering by given element, country and year
   top <- data %>%
     filter(Element == element_choice, Area == country_choice) %>%
     select(Item, c(year_choice)) %>%
     top_n(n = 5)
   
+  ## Getting x labels 
   x <- as.vector(top$Item)
   
+  ## Making bar plot
   plot4 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Greens") %>%
     layout(title = "Top Produced Items per Country",
            yaxis = list(title = 'Tonnes Produced (thousands)'),
