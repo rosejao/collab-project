@@ -166,7 +166,14 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
             )
           ),
           mainPanel(
-            plotlyOutput("plot3")
+            plotlyOutput("plot3"),
+            h4(
+              strong("Who Produces The Most?"),
+              align = "center"
+            ),
+            p(strong("Instructions:"), "Select either ‘Food’ or ‘Feed’ and then choose the 
+              agricultural item that will be measured by production levels. Use the graph to 
+              look at trends and hover over the bars for the top producers and their exact amounts.")
           )
         )
       ),
@@ -197,7 +204,15 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
             )
           ),
           mainPanel(
-            plotlyOutput("plot4")
+            plotlyOutput("plot4"),
+            h4(
+              strong("What Does Each Country Produce"),
+              align = "center"
+            ),
+            br(""),
+            p(strong("Instructions:"), "Select either ‘Food’ or ‘Feed’ and then choose which
+              country you would like to explore the agricultural production. Use the graph to 
+              look at trends and hover over the bars of the displayed product for exact amounts.")
           )
         )
       )
