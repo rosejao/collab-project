@@ -1,10 +1,10 @@
-# @ Declaring libraries
+## Declaring libraries
 library(shiny)
 library(ggplot2)
 library(dplyr)
 source("analysis.R")
 
-# @ Defining UI
+## Defining UI
 ui <- fluidPage(
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "project.css")
@@ -12,7 +12,8 @@ ui <- fluidPage(
   navbarPage(
     tabsetPanel(
 
-      ## First tab of selection of produce type and country
+      ## tab 1 lets users select a year and an item and displays a choropleth 
+      ## map showing how much each country produces 
       tabPanel(
         "Food and Feed Produced by Country",
         titlePanel("Food and Feed Produced by Country"),
@@ -84,7 +85,8 @@ oversight of the top producing countries.")
         )
       ),
 
-      ## tab two of comparing
+      ## tab 2 lets users see the trend of an item produced by two countries
+      ## at the same time
       tabPanel(
         "Compare Country Food and Feed Trends",
         titlePanel("Country Food and Feed Trends"),
@@ -113,6 +115,10 @@ oversight of the top producing countries.")
           )
         )
       ),
+      
+      ## tab 3 lets the user select a year, element, and country and displays a
+      ## barplot with the top 5 items that are produced by that country
+      ## given those filters
       tabPanel(
         "Top Countries per Item",
         titlePanel("Top Countries per Item"),
@@ -140,6 +146,10 @@ oversight of the top producing countries.")
           )
         )
       ),
+      
+      ## tab 4 lets the user select a year, element, and item and displays a
+      ## barplot with the top 5 countries that produce that item
+      ## given those filters
       tabPanel(
         "Top Items per Country",
         titlePanel("Top Items per Country"),
