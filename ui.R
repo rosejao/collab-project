@@ -18,7 +18,7 @@ ui <- fluidPage(
         titlePanel("Food and Feed Produced by Country"),
         sidebarLayout(
           sidebarPanel(
-            sliderInput("year", "Year",
+            sliderInput("year", "Year:",
               sep = "", min = 1961, max = 2013, value = 1961, step = 1, animate =
                 animationOptions(interval = 1000, loop = TRUE)
             ),
@@ -32,7 +32,43 @@ ui <- fluidPage(
             )
           ),
           mainPanel(
-            plotlyOutput("plot1")
+            plotlyOutput("plot1"),
+            h4(
+              strong("What We Produce and How It Has Changed"), align = "center"),
+            p(
+            strong("Instructions:"), "Select either ‘Food’ or ‘Feed’ and then 
+choose the agricultural item that will be measured by global production. Use the 
+slider to select the year and hover over the desired country on the interactive 
+map, for the number of tons produced in that specific country."),
+
+p(
+  em("For this example, we will use ‘Maize and products’ and focus on the United 
+     States.")),
+p("In 1961 the U.S. produced 81.5 million tons for feed and 1.47 million tons for 
+food, and in 2013 1.28 billion tons were produced for feed and 3.91 million tons 
+for food. Although the tons of feed and food increased over half a century, the 
+amounts actually decreased in comparison to the global production."),
+
+p("We see that the U.S. grew from 183.7 million to 316 million people (US Census). 
+When we take population into account, we see that the U.S. reduced the maize 
+production per person and produced 1.2 tons and 0.81 tons of maize per American
+in 1961 and 2013 respectively. The majority of maize production is being utilized 
+for animal feed. This is most likely attributed to the drastic increase in meat 
+production and consumption by American consumers. The graph below shows the 
+increase in meat consumption spearheaded by the popular rise in poultry over 
+the past couple of decades."),
+
+img(src ="annual-meat-consumption.png"),
+ 
+
+
+p("It appears that the U.S. maintains a pretty high production of feed relative 
+to the global production levels but begins to lose market share in the 2000s. 
+
+For further analysis, we can use the ‘Compare Country Food and Feed Trends’ to 
+segment a particular product or compare/contrast countries. You may also use the
+‘Top Countries per Item’ tab to get general oversight of the top producing countries.
+")
           )
         )
       ),
@@ -44,9 +80,9 @@ ui <- fluidPage(
         sidebarLayout(
           sidebarPanel(
             selectizeInput(
-              "country", "Countries",
+              "country", "Countries:",
               choices = countries,
-              options = list(maxItems = 2, placeholder = "Choose a country"),
+              options = list(maxItems = 2, placeholder = "choose a country"),
               multiple = TRUE
             ),
             selectInput("element",
@@ -54,7 +90,7 @@ ui <- fluidPage(
               choices = elements
             ),
             selectizeInput(
-              "item", "Items",
+              "item", "Items:",
               choices = items,
               options = list(maxItems = 1, placeholder = "choose an item"),
               multiple = TRUE,
