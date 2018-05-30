@@ -203,7 +203,7 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
           mainPanel(
             plotlyOutput("plot4"),
             h4(
-              strong("What Does Each Country Produce"),
+              strong("What Does Each Country Produce?"),
               align = "center"
             ),
             br(""),
