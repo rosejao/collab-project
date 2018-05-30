@@ -7,8 +7,8 @@ source("analysis.R")
 ## Defining UI
 ui <-   navbarPage("Global Agricultural Production", theme = "project.css",
 
-      ## tab 1 lets users select a year and an item and displays a choropleth 
-      ## map showing how much each country produces 
+      ## tab 1 lets users select a year and an item and displays a choropleth
+      ## map showing how much each country produces
       tabPanel(
         "Food and Feed Produced by Country",
         titlePanel("Food and Feed Produced by Country"),
@@ -90,7 +90,8 @@ oversight of the top producing countries.")
             selectizeInput(
               "country", "Countries",
               choices = countries,
-              options = list(maxItems = 2, placeholder = "Choose 1 or 2 countries"),
+              options = list(maxItems = 2, placeholder =
+                               "Choose 1 or 2 countries"),
               multiple = TRUE
             ),
             selectInput("element",
@@ -111,30 +112,36 @@ oversight of the top producing countries.")
               strong("How do Countries Compare?"),
               align = "center"
             ),
-            p(strong("Instructions:"), "Type in which two countries you would 
-like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose the 
-              agricultural item that will be measured by production levels. Use the graph to 
-              look at trends and hover over the lines at any given point for exact amounts."),
-            
-            p(em("For this example we will compare the production of maize in the 
+            p(strong("Instructions:"), "Type in which two countries you would
+like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose the
+              agricultural item that will be measured by production levels.
+Use the graph to
+              look at trends and hover over the lines at any given point for
+              exact amounts."),
+            p(em("For this example we will compare the production
+of maize in the
                  U.S.A and mainland China.")),
-            
-            p("Upon a quick glance at the ‘Food’ and ‘Feed’ graphs, we see that China 
-              witnessed dramatic growth in 1978 which is when the Chinese had their 
-              agricultural revolution. They eliminated personal farms and property, 
-              and replaced their system with a socialistic approach by contributing to 
-              collective farms. We also see that the U.S. reached a production plateau 
-              in 1987, and a quick Google search shows that the U.S. overproduced corn that 
-              year and struggled with storing the surplus corn due to storage limitations 
+            p("Upon a quick glance at the ‘Food’ and ‘Feed’ graphs,
+we see that China
+              witnessed dramatic growth in 1978 which is when the
+Chinese had their
+              agricultural revolution. They eliminated personal
+farms and property,
+              and replaced their system with a socialistic approach
+by contributing to
+              collective farms. We also see that the U.S. reached a
+production plateau
+              in 1987, and a quick Google search shows that the U.S.
+overproduced corn that
+              year and struggled with storing the surplus corn due to
+storage limitations
               and spoilage."),
-            
             p("Sources:"),
             p(a("https://www.nytimes.com/1987/10/11/us/corn-harvest-is-bounty-and-burden.html"),
-              a("https://www.npr.org/sections/money/2012/01/20/145360447/the-secret-document-that-transformed-china"))
+            a("https://www.npr.org/sections/money/2012/01/20/145360447/the-secret-document-that-transformed-china"))
           )
         )
       ),
-      
       ## tab 3 lets the user select a year, element, and country and displays a
       ## barplot with the top 5 items that are produced by that country
       ## given those filters
@@ -168,13 +175,15 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
               align = "center"
             ),
             br(""),
-            p(strong("Instructions:"), "Select either ‘Food’ or ‘Feed’ and then choose the 
-              agricultural item that will be measured by production levels. Use the graph to 
-              look at trends and hover over the bars for the top producers and their exact amounts.")
+            p(strong("Instructions:"), "Select either ‘Food’ or ‘Feed’
+and then choose the
+              agricultural item that will be measured by production levels.
+Use the graph to
+              look at trends and hover over the bars for the top producers
+              and their exact amounts.")
           )
         )
       ),
-      
       ## tab 4 lets the user select a year, element, and item and displays a
       ## barplot with the top 5 countries that produce that item
       ## given those filters
@@ -207,9 +216,12 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
               align = "center"
             ),
             br(""),
-            p(strong("Instructions:"), "Select either ‘Food’ or ‘Feed’ and then choose which
-              country you would like to explore the agricultural production. Use the graph to 
-              look at trends and hover over the bars of the displayed product for exact amounts.")
+            p(strong("Instructions:"), "Select either ‘Food’ or ‘Feed’
+and then choose which
+              country you would like to explore the agricultural
+production. Use the graph to
+              look at trends and hover over the bars of the displayed
+              product for exact amounts.")
           )
         )
       )
