@@ -80,9 +80,9 @@ segment a particular product or compare/contrast countries. You may also use the
         sidebarLayout(
           sidebarPanel(
             selectizeInput(
-              "country", "Countries:",
+              "country", "Countries",
               choices = countries,
-              options = list(maxItems = 2, placeholder = "choose a country"),
+              options = list(maxItems = 2, placeholder = "Choose a country"),
               multiple = TRUE
             ),
             selectInput("element",
@@ -90,7 +90,7 @@ segment a particular product or compare/contrast countries. You may also use the
               choices = elements
             ),
             selectizeInput(
-              "item", "Items:",
+              "item", "Items",
               choices = items,
               options = list(maxItems = 1, placeholder = "choose an item"),
               multiple = TRUE,
@@ -144,7 +144,7 @@ segment a particular product or compare/contrast countries. You may also use the
           selectizeInput(
             "country2", "Items:",
             choices = countries,
-            options = list(maxItems = 1, placeholder = "choose a country"),
+            options = list(maxItems = 1, placeholder = "Choose a country"),
             multiple = TRUE,
             selected = "India"
           )

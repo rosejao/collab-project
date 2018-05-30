@@ -50,7 +50,7 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
       colors = "Greens", text = ~ Area,
       locations = ~ Area.Abbreviation, marker = list(line = l)
     ) %>%
-    colorbar(title = "Food/Feed produced (1,000 tonnes)") %>%
+    colorbar(title = "Tonnes of Food/Feed Produced (thousands)") %>%
     layout(
       paper_bgcolor='rgba(0,0,0,0)',
       plot_bgcolor='rgba(0,0,0,0)',
@@ -113,7 +113,8 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     add_trace(y = year_data2$values, name = country_name2, line = list(color = "rgb(22, 96, 167)", width = 4)) %>% 
     layout(title = "Country Production Comparison",
       xaxis = x, yaxis = y,
-          margin = list(b = 60), xaxis = list(tickangle = 45))
+      autosize = F,
+          margin = list(b = 60), list(t = 100), xaxis = list(tickangle = 45))
   
   return(plot2)
 }
@@ -130,8 +131,11 @@ top_countries <- function(element_choice = "Food", item_choice, year_choice) {
   x <- as.vector(top$Area)
 
   plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Reds") %>%
-    layout(yaxis = list(title = 'Amount Produced (1,000 tonnes)'),
-           xaxis = list(title = 'Country'))
+    layout(title = "Top Producing Countries per Item",
+           yaxis = list(title = 'Tonnes Produced (thousands)'),
+           xaxis = list(title = 'Country'),
+           autosize = F,
+           margin = list(b = 90), list(r = 90), xaxis = list(tickangle = 15))
   
   return(plot3)
 }
@@ -147,8 +151,11 @@ top_items <- function(element_choice = "Food", country_choice, year_choice) {
   x <- as.vector(top$Item)
   
   plot4 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Greens") %>%
-    layout(yaxis = list(title = 'Amount Produced (1,000 tonnes)'),
-           xaxis = list(title = 'Item'))
+    layout(title = "Top Produced Items per Country",
+           yaxis = list(title = 'Tonnes Produced (thousands)'),
+           xaxis = list(title = 'Item'),
+           autosize = F,
+           margin = list(b = 130), xaxis = list(tickangle = 20))
   
   
   return(plot4)
