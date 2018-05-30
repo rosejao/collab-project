@@ -102,12 +102,10 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     color = "#7f7f7f"
   )
   x <- list(
-    title = "Year",
-    titlefont = f
+    title = "Year"
   )
   y <- list(
-    title = "Tonnes Produced (thousands)",
-    titlefont = f
+    title = "Tonnes Produced (thousands)"
   )
   
   ## Trend of country food and feed across decades to present on map
@@ -120,7 +118,7 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     layout(title = "Country Production Comparison",
       xaxis = x, yaxis = y,
       autosize = T,
-          margin = list(b = 60), list(t = 100), xaxis = list(tickangle = 45))
+          margin = list(b = 60), list(t = 100), pad = 6, xaxis = list(tickangle = 45))
   
   return(plot2)
 }
