@@ -22,7 +22,8 @@ elements <- data %>%
 
 
 ## returns a map displaying the food/feed produced by country
-food_year <- function(year_choice, element_choice = "Food", item_choice = "Total") {
+food_year <- function(year_choice,
+                      element_choice = "Food", item_choice = "Total") {
   food_data <- group_by(data, Area.Abbreviation, Area) %>%
     filter(Element == element_choice) %>%
     filter(Item == item_choice) %>%
@@ -52,8 +53,8 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
     ) %>%
     colorbar(title = "Tonnes of Food/Feed Produced (thousands)") %>%
     layout(
-      paper_bgcolor='rgba(0,0,0,0)',
-      plot_bgcolor='rgba(0,0,0,0)',
+      paper_bgcolor = "rgba(0,0,0,0)",
+      plot_bgcolor = "rgba(0,0,0,0)",
       title = "Food and Feed Data by Country",
       geo = g,
       autosize = F, width = 1000, height = 3, margin = m
@@ -65,31 +66,42 @@ food_year <- function(year_choice, element_choice = "Food", item_choice = "Total
 ## two countries can be selected at once to compare data
 ## a single item can be selected to compare countries by item
 country_trend <- function(country_names, element_choice = "Food", item_choice) {
-  ## items_list <- c("Sugar cane", "Honey")
+  ## items_list function
   years <- c(
     "2013", "2012", "2011",
-    "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001",
-    "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991",
-    "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981",
-    "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971",
-    "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961"
+    "2010", "2009", "2008", "2007", "2006",
+    "2005", "2004", "2003", "2002", "2001",
+    "2000", "1999", "1998", "1997", "1996",
+    "1995", "1994", "1993", "1992", "1991",
+    "1990", "1989", "1988", "1987", "1986",
+    "1985", "1984", "1983", "1982", "1981",
+    "1980", "1979", "1978", "1977", "1976",
+    "1975", "1974", "1973", "1972", "1971",
+    "1970", "1969", "1968", "1967", "1966",
+    "1965", "1964", "1963", "1962", "1961"
   )
 
   country_name1 <- country_names[1]
   country_name2 <- country_names[2]
 
   country_data1 <- data %>%
-    filter(Area == country_name1, Element == element_choice, Item == item_choice) %>%
+    filter(
+      Area == country_name1,
+      Element == element_choice, Item == item_choice
+    ) %>%
     summarise_at(.vars = vars(Y1961:Y2013), sum, na.rm = TRUE)
 
   year_data1 <- stack(country_data1)
 
   country_data2 <- data %>%
-    filter(Area == country_name2, Element == element_choice, Item == item_choice) %>%
+    filter(
+      Area == country_name2,
+      Element == element_choice, Item == item_choice
+    ) %>%
     summarise_at(.vars = vars(Y1961:Y2013), sum, na.rm = TRUE)
 
   year_data2 <- stack(country_data2)
-  
+
   f <- list(
     family = "Courier New, monospace",
     size = 18,
@@ -103,60 +115,67 @@ country_trend <- function(country_names, element_choice = "Food", item_choice) {
     title = "Tonnes Produced (thousands)",
     titlefont = f
   )
-  
+
   ## Trend of country food and feed across decades to present on map
   plot2 <- plot_ly(
     x = years, y = year_data1$values, name = country_name1,
     type = "scatter", mode = "lines",
     line = list(color = "rgb(205, 12, 24)", width = 4)
   ) %>%
-    add_trace(y = year_data2$values, name = country_name2, line = list(color = "rgb(22, 96, 167)", width = 4)) %>% 
-    layout(title = "Country Production Comparison",
+    add_trace(
+      y = year_data2$values, name = country_name2,
+      line = list(color = "rgb(22, 96, 167)", width = 4)
+    ) %>%
+    layout(
+      title = "Country Production Comparison",
       xaxis = x, yaxis = y,
       autosize = F,
-          margin = list(b = 60), list(t = 100), xaxis = list(tickangle = 45))
-  
+      margin = list(b = 60), list(t = 100), xaxis = list(tickangle = 45)
+    )
+
   return(plot2)
 }
 
 ## returns a histogram with the top five countries that produce the food/feed of
 ## the selected item
 top_countries <- function(element_choice = "Food", item_choice, year_choice) {
-  
   top <- data %>%
     filter(Element == element_choice, Item == item_choice) %>%
     select(Area, c(year_choice)) %>%
     top_n(n = 5)
-  
+
   x <- as.vector(top$Area)
 
-  plot3 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Reds") %>%
-    layout(title = "Top Producing Countries per Item",
-           yaxis = list(title = 'Tonnes Produced (thousands)'),
-           xaxis = list(title = 'Country'),
-           autosize = F,
-           margin = list(b = 90), list(r = 90), xaxis = list(tickangle = 15))
-  
+  plot3 <- plot_ly(x = x, y = top[, 2], type = "bar", color = "Reds") %>%
+    layout(
+      title = "Top Producing Countries per Item",
+      yaxis = list(title = "Tonnes Produced (thousands)"),
+      xaxis = list(title = "Country"),
+      autosize = F,
+      margin = list(b = 90), list(r = 90), xaxis = list(tickangle = 15)
+    )
+
   return(plot3)
 }
 
 ## the selected item
 top_items <- function(element_choice = "Food", country_choice, year_choice) {
-  
   top <- data %>%
     filter(Element == element_choice, Area == country_choice) %>%
     select(Item, c(year_choice)) %>%
     top_n(n = 5)
-  
+
   x <- as.vector(top$Item)
-  
-  plot4 <- plot_ly(x = x, y = top[, 2],  type = "bar", color ="Greens") %>%
-    layout(title = "Top Produced Items per Country",
-           yaxis = list(title = 'Tonnes Produced (thousands)'),
-           xaxis = list(title = 'Item'),
-           autosize = F,
-           margin = list(b = 130), xaxis = list(tickangle = 20))
-  
-  
+
+  plot4 <- plot_ly(x = x, y = top[, 2], type = "bar", color = "Greens") %>%
+    layout(
+      title = "Top Produced Items per Country",
+      yaxis = list(title = "Tonnes Produced (thousands)"),
+      xaxis = list(title = "Item"),
+      autosize = F,
+      margin = list(b = 130), xaxis = list(tickangle = 20)
+    )
+
+
   return(plot4)
 }
