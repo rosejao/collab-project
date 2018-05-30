@@ -5,12 +5,7 @@ library(dplyr)
 source("analysis.R")
 
 ## Defining UI
-ui <- fluidPage(
-  tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "project.css")
-  ),
-  navbarPage(
-    tabsetPanel(
+ui <-   navbarPage("Global Agricultural Production", theme = "project.css",
 
       ## tab 1 lets users select a year and an item and displays a choropleth 
       ## map showing how much each country produces 
@@ -217,8 +212,6 @@ like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose
         )
       )
     )
-  )
-)
 
 ## App config
 shinyUI(ui)
