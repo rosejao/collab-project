@@ -111,7 +111,31 @@ oversight of the top producing countries.")
             )
           ),
           mainPanel(
-            plotlyOutput("plot2")
+            plotlyOutput("plot2"),
+            h4(
+              strong("How do Countries Compare?"),
+              align = "center"
+            ),
+            p(strong("Instructions:"), "Type in which two countries you would 
+like to compare/contrast. Select either ‘Food’ or ‘Feed’ and then choose the 
+              agricultural item that will be measured by production levels. Use the graph to 
+              look at trends and hover over the lines at any given point for exact amounts."),
+            
+            p(em("For this example we will compare the production of maize in the 
+                 U.S.A and mainland China.")),
+            
+            p("Upon a quick glance at the ‘Food’ and ‘Feed’ graphs, we see that China 
+              witnessed dramatic growth in 1978 which is when the Chinese had their 
+              agricultural revolution. They eliminated personal farms and property, 
+              and replaced their system with a socialistic approach by contributing to 
+              collective farms. We also see that the U.S. reached a production plateau 
+              in 1987, and a quick google search shows that the U.S. overproduced corn that 
+              year and struggled with storing the surplus corn due to storage limitations 
+              and spoilage."),
+            
+            p("Sources:"),
+            p(a("https://www.nytimes.com/1987/10/11/us/corn-harvest-is-bounty-and-burden.html"),
+              a("https://www.npr.org/sections/money/2012/01/20/145360447/the-secret-document-that-transformed-china"))
           )
         )
       ),
